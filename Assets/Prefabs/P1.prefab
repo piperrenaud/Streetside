@@ -124,7 +124,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3620294112647701367}
   - component: {fileID: -4126035786863542634}
-  - component: {fileID: -7001265731674147815}
+  - component: {fileID: -6507349056264551527}
   - component: {fileID: -761688820318505144}
   - component: {fileID: 9098778281763890080}
   m_Layer: 0
@@ -173,11 +173,11 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &-7001265731674147815
+--- !u!114 &-6507349056264551527
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -186,13 +186,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 7685845271901127508}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a99c313dadc0d514bbeb82c329445d29, type: 3}
+  m_Script: {fileID: 11500000, guid: e2c50b154a203014588fae309ebb6835, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  m_EditorClassIdentifier: Assembly-CSharp::Player1
   moveSpeed: 5
+  jumpForce: 10
+  forwardForce: 10
   wallLayer:
     serializedVersion: 2
     m_Bits: 8
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &-761688820318505144
 MonoBehaviour:
   m_ObjectHideFlags: 0

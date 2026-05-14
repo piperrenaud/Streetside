@@ -1,16 +1,23 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerBase : MonoBehaviour
 {
     public float moveSpeed = 5f;
+    public float jumpForce = 15f;
+    public float forwardForce = 15f;
     public LayerMask wallLayer;
+    public LayerMask groundLayer;
+
 
     private Vector3 currentDirection;
     private Vector3 nextDirection;
-    private Vector3 targetPos;
-    private bool isMoving;
-
+    protected Vector3 targetPos;
+    protected bool isMoving;
+    protected bool isGrounded;
+    
+    protected Rigidbody rb;
+    
     public void OnMove(InputValue value)
     {
         Debug.Log($"{gameObject.name} received input: {value.Get<Vector2>()}");
@@ -27,14 +34,19 @@ public class PlayerMovement : MonoBehaviour
             nextDirection = new Vector3(input.x, 0, input.y);
         }
     }
+
+    public virtual void OnJump(InputValue value)
+    {
+        
+    }
     
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
+        isGrounded = true;
         targetPos = transform.position;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!isMoving)
@@ -55,6 +67,15 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
+        else if (!isGrounded)
+        {
+            if (Physics.Raycast(transform.position, Vector3.down, 1f, groundLayer))
+            {
+                targetPos = transform.position;
+                isGrounded = true;
+                isMoving = false;
+            }
+        }
         else
         {
             MoveTowardsTarget();
@@ -65,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
 
-        if (Vector3.Distance(transform.position, targetPos) < 0.001f)
+        if (Vector3.Distance(transform.position, targetPos) < 0.1f)
         {
             transform.position = targetPos;
             isMoving = false;

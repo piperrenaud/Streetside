@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - HighJump
+  - LongJump
   layers:
   - Default
   - TransparentFX
@@ -11,8 +13,8 @@ TagManager:
   - Wall Layer
   - Water
   - UI
-  - 
-  - 
+  - Interact Layer
+  - Ground
   - 
   - 
   - 
