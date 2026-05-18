@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: -6507349056264551527}
   - component: {fileID: -761688820318505144}
   - component: {fileID: 9098778281763890080}
+  - component: {fileID: 789149515939015889}
   m_Layer: 0
   m_Name: P1
   m_TagString: Player
@@ -240,3 +241,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7586b12dc4d7535438c96225bf2af5cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputHelper
+--- !u!114 &789149515939015889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7685845271901127508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40e1aabc7a0ee674e9fe83073677dfc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerGraffiti
+  playerGraffiti: {fileID: 21300000, guid: dd1439ce77d39994996b4a74506f6427, type: 3}
+  playerId: 1
