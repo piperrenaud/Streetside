@@ -17,6 +17,7 @@ public class PlayerBase : MonoBehaviour
     protected bool isGrounded;
     
     protected Rigidbody rb;
+    protected Animator animator;
     
     public void OnMove(InputValue value)
     {
@@ -43,6 +44,7 @@ public class PlayerBase : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        animator = GetComponentInChildren<Animator>();
         isGrounded = true;
         targetPos = transform.position;
     }
@@ -74,6 +76,12 @@ public class PlayerBase : MonoBehaviour
                 targetPos = transform.position;
                 isGrounded = true;
                 isMoving = false;
+
+                //anim stuff
+                if (animator != null)
+                {
+                    animator.SetBool("Falling", false);
+                }
             }
         }
         else
@@ -84,12 +92,25 @@ public class PlayerBase : MonoBehaviour
 
     void MoveTowardsTarget()
     {
+        //animation stuff
+        if (animator != null)
+        {
+            animator.SetBool("Running", true);
+            animator.SetBool("Falling", false);
+        }
+
         transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
 
         if (Vector3.Distance(transform.position, targetPos) < 0.1f)
         {
             transform.position = targetPos;
             isMoving = false;
+
+            //anim stuff
+            if (animator != null)
+            {
+                animator.SetBool("Running", false);
+            }
         }
     }
 

@@ -18,6 +18,14 @@ public class Player2 : PlayerBase
             if (hit.collider.CompareTag("HighJump"))
             {
                 isGrounded = false;
+
+                //animation stuff
+                if (animator != null)
+                {
+                    animator.SetBool("Running", false);
+                    animator.SetBool("Falling", true);
+                }
+
                 Vector3 jumpDirection = (Vector3.up * jumpForce) + (transform.forward * forwardForce);
             
                 rb.AddForce(jumpDirection, ForceMode.VelocityChange);
