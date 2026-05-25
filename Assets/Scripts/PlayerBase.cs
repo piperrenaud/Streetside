@@ -61,6 +61,7 @@ public class PlayerBase : MonoBehaviour
             if (CanMove(currentDirection))
             {
                 targetPos = transform.position + currentDirection;
+
                 isMoving = true;
 
                 if (currentDirection != Vector3.zero)
