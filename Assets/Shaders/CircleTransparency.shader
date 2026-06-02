@@ -8,8 +8,8 @@ Shader "Custom/CircleTransparency"
         _Smoothness("Smoothness", Range(0.0, 1.0)) = 0.5
         _Metallic("Metallic", Range(0.0, 1.0)) = 0.0
         
-        _CutoutRadius("Circle Radius", Range(0.0, 0.5)) = 0.15
-        _Feather("Circle Edge Softness", Range(0.01, 0.2)) = 0.03
+        _CutoutRadius("Circle Radius", Range(0.1, 10.0)) = 3.0
+        _Feather("Circle Edge Softness", Range(0.1, 3.0)) = 0.5
         _SeeThroughAlpha("Inside Circle Alpha", Range(0.0, 1.0)) = 0.2
     }
 
@@ -46,10 +46,8 @@ Shader "Custom/CircleTransparency"
                 half _SeeThroughAlpha;
             CBUFFER_END
 
-            uniform float4 _PlayerOneScreenPos;
-            uniform float4 _PlayerTwoScreenPos;
-            uniform float _PlayerOneOccluded;
-            uniform float _PlayerTwoOccluded;
+            uniform float4 _CutoutTargetWS1;
+            uniform float4 _CutoutTargetWS2;
 
             #include "Packages/com.unity.render-pipelines.universal/Shaders/LitForwardPass.hlsl"
 
@@ -62,20 +60,22 @@ Shader "Custom/CircleTransparency"
             {
                 half4 finalColour;
                 LitPassFragment(IN, finalColour);
+
+                // Reconstruct the real 3D World Position of this pixel using internal matrix arrays
                 float2 screenUV = IN.positionCS.xy / _ScreenParams.xy;
-                float aspectRatio = _ScreenParams.x / _ScreenParams.y;
-                float2 aspcetCorrectedUV = float2(screenUV.x * aspectRatio, screenUV.y);
-                float2 p1Target = float2(_PlayerOneScreenPos.x * aspectRatio, _PlayerOneScreenPos.y);
-                float2 p2Target = float2(_PlayerTwoScreenPos.x * aspectRatio, _PlayerTwoScreenPos.y);
+                float3 pixelWorldPos = ComputeWorldSpacePosition(screenUV, IN.positionCS.z, UNITY_MATRIX_I_VP);
 
-                float distToP1 = distance(aspcetCorrectedUV, p1Target);
-                float distToP2 = distance(aspcetCorrectedUV, p2Target);
+                // Calculate straight-line 3D distances from this wall pixel to the impact positions
+                float distToP1 = distance(pixelWorldPos, _CutoutTargetWS1.xyz);
+                float distToP2 = distance(pixelWorldPos, _CutoutTargetWS2.xyz);
 
-                float circle1 = smoothstep(_CutoutRadius, _CutoutRadius - _Feather, distToP1) * _PlayerOneOccluded;
-                float circle2 = smoothstep(_CutoutRadius, _CutoutRadius - _Feather, distToP2) * _PlayerTwoOccluded;
+                // Sphere masks calculated directly in 3D world space
+                float mask1 = smoothstep(_CutoutRadius, _CutoutRadius - _Feather, distToP1) * _CutoutTargetWS1.w;
+                float mask2 = smoothstep(_CutoutRadius, _CutoutRadius - _Feather, distToP2) * _CutoutTargetWS2.w;
+                
+                float combinedMask = saturate(mask1 + mask2);
 
-                float combinedMask = saturate(circle1 + circle2);
-
+                // Fade out the alpha exclusively inside the intersection zone
                 finalColour.a = lerp(1.0, _SeeThroughAlpha, combinedMask);
 
                 return finalColour;

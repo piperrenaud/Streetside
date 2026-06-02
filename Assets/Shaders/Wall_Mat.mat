@@ -32,7 +32,7 @@ Material:
     - _CutoutRadius: 0.11
     - _Feather: 0.044
     - _Metallic: 0
-    - _SeeThroughAlpha: 0.2
+    - _SeeThroughAlpha: 0.686
     - _Smoothness: 0.5
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
