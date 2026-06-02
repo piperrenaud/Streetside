@@ -48,10 +48,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _CutoutRadius: 3
-    - _Feather: 0.5
+    - _CutoutRadius: 7
+    - _Feather: 1
     - _Metallic: 0
-    - _SeeThroughAlpha: 0.2
+    - _SeeThroughAlpha: 0.5
     - _Smoothness: 0.5
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
