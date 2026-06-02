@@ -5,6 +5,9 @@ using UnityEngine.InputSystem;
 public class Player1 : PlayerBase
 {
     private float jumpInteractDistance = 5f;
+    private bool bCanPickUp = false;
+    private GameObject pickupItem;
+    private bool bIsPickedUp = false;
     
     public override void OnJump(InputValue value)
     {
@@ -33,5 +36,41 @@ public class Player1 : PlayerBase
             }
         }
     }
-    
+
+    public override void OnInteract(InputValue value)
+    {
+        base.OnInteract(value);
+
+        if (!bIsPickedUp)
+        {
+            if (bCanPickUp && pickupItem)
+            {
+                bIsPickedUp = true;
+                pickupItem.transform.SetParent(this.transform);
+            }
+        }
+        else
+        {
+            bIsPickedUp = false;
+            pickupItem.transform.SetParent(null);
+        }
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Interactable"))
+        {
+            bCanPickUp = true;
+            pickupItem = other.gameObject;
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Interactable"))
+        {
+            bCanPickUp = false;
+            pickupItem = null;
+        }
+    }
 }

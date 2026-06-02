@@ -40,6 +40,11 @@ public class PlayerBase : MonoBehaviour
     {
         
     }
+
+    public virtual void OnInteract(InputValue value)
+    {
+        
+    }
     
     void Start()
     {

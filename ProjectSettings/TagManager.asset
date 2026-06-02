@@ -6,6 +6,7 @@ TagManager:
   tags:
   - HighJump
   - LongJump
+  - Interactable
   layers:
   - Default
   - TransparentFX
