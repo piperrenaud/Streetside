@@ -15,13 +15,14 @@ public class PlayerBase : MonoBehaviour
     
     protected bool bIsMoving;
     protected bool bIsJumping = false;
+    protected bool bIsSliding = false;
     
     protected Rigidbody rb;
     protected Animator animator;
     
     public void OnMove(InputValue value)
     {
-        if (bIsJumping) return;
+        if (bIsJumping || bIsSliding) return;
         
         Vector2 input = value.Get<Vector2>();
 
@@ -55,7 +56,7 @@ public class PlayerBase : MonoBehaviour
 
     void Update()
     {
-        if (bIsJumping) return;
+        if (bIsJumping || bIsSliding) return;
 
         if (!bIsMoving)
         {
@@ -83,7 +84,7 @@ public class PlayerBase : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (bIsMoving && !bIsJumping)
+        if (bIsMoving && !bIsJumping && !bIsSliding)
         {
             MoveTowardsTarget();
         }
