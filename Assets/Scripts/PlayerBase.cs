@@ -1,27 +1,27 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerBase : MonoBehaviour
 {
     public float moveSpeed = 5f;
-    public float jumpForce = 15f;
-    public float forwardForce = 15f;
+
     public LayerMask wallLayer;
-    public LayerMask groundLayer;
+    public LayerMask interactLayer;
 
-
-    private Vector3 currentDirection;
-    private Vector3 nextDirection;
+    protected Vector3 currentDirection;
+    protected Vector3 nextDirection;
     protected Vector3 targetPos;
-    protected bool isMoving;
-    protected bool isGrounded;
+    
+    protected bool bIsMoving;
+    protected bool bIsJumping = false;
     
     protected Rigidbody rb;
     protected Animator animator;
     
     public void OnMove(InputValue value)
     {
-        Debug.Log($"{gameObject.name} received input: {value.Get<Vector2>()}");
+        if (bIsJumping) return;
         
         Vector2 input = value.Get<Vector2>();
 
@@ -50,13 +50,14 @@ public class PlayerBase : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
-        isGrounded = true;
         targetPos = transform.position;
     }
 
     void Update()
     {
-        if (!isMoving)
+        if (bIsJumping) return;
+
+        if (!bIsMoving)
         {
             if (CanMove(nextDirection))
             {
@@ -66,31 +67,23 @@ public class PlayerBase : MonoBehaviour
             if (CanMove(currentDirection))
             {
                 targetPos = transform.position + currentDirection;
-
-                isMoving = true;
-
-                if (currentDirection != Vector3.zero)
-                {
-                    transform.forward = currentDirection;
-                }
+                bIsMoving = true;
             }
-        }
-        else if (!isGrounded)
-        {
-            if (Physics.Raycast(transform.position, Vector3.down, 1f, groundLayer))
+            else
             {
-                targetPos = transform.position;
-                isGrounded = true;
-                isMoving = false;
-
+                rb.linearVelocity = Vector3.zero;
                 //anim stuff
                 if (animator != null)
                 {
-                    animator.SetBool("Falling", false);
+                    animator.SetBool("Running", false);
                 }
             }
         }
-        else
+    }
+
+    private void FixedUpdate()
+    {
+        if (bIsMoving && !bIsJumping)
         {
             MoveTowardsTarget();
         }
@@ -105,19 +98,22 @@ public class PlayerBase : MonoBehaviour
             animator.SetBool("Falling", false);
         }
 
-        transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
+       Vector3 moveDir = (targetPos - transform.position).normalized;
+       
+       rb.linearVelocity = moveDir * moveSpeed;
 
-        if (Vector3.Distance(transform.position, targetPos) < 0.1f)
-        {
-            transform.position = targetPos;
-            isMoving = false;
-
-            //anim stuff
-            if (animator != null)
-            {
-                animator.SetBool("Running", false);
-            }
-        }
+       if (moveDir != Vector3.zero)
+       {
+           Quaternion targetRotation = Quaternion.LookRotation(moveDir);
+           transform.rotation = targetRotation;
+       }
+       
+       if (Vector3.Distance(transform.position, targetPos) < 0.05f)
+       {
+           transform.position = targetPos;
+           rb.linearVelocity = Vector3.zero;
+           bIsMoving = false;
+       }
     }
 
     bool CanMove(Vector3 direction)
@@ -133,5 +129,42 @@ public class PlayerBase : MonoBehaviour
         Debug.DrawRay(rayStart, direction * 1.0f, hit ? Color.red : Color.green);
         
         return !hit;
+    }
+
+    public void ForceStop(Vector3 position)
+    {
+        bIsMoving = false;
+        currentDirection = Vector3.zero;
+        rb.linearVelocity = Vector3.zero;
+
+        // Snap cleanly to the specified grid tile
+        transform.position = new Vector3(
+            Mathf.Round(position.x),
+            transform.position.y,
+            Mathf.Round(position.z)
+        );
+        targetPos = transform.position;
+
+        if (animator != null) 
+        {
+            animator.SetBool("Running", false);
+        }
+    }
+
+    public void HandleItemDropDisplacemnt()
+    {
+        Vector3 rayStart = transform.position + Vector3.up * 0.5f;
+
+        if (Physics.Raycast(rayStart, transform.forward, 1.0f, interactLayer))
+        {
+            transform.position = new Vector3(Mathf.Round(transform.position.x), transform.position.y, Mathf.Round(transform.position.z));
+        
+            targetPos = transform.position;
+            bIsMoving = false;
+            currentDirection = Vector3.zero;
+            rb.linearVelocity = Vector3.zero;
+        
+            if (animator != null) animator.SetBool("Running", false);
+        }
     }
 }

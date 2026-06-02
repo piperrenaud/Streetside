@@ -29,7 +29,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _CutoutRadius: 0.11
+    - _CutoutRadius: 5.4
     - _Feather: 0.044
     - _Metallic: 0
     - _SeeThroughAlpha: 0.686
