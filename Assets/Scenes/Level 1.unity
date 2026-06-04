@@ -10318,7 +10318,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1974881289371607026, guid: 9c010c07147b0b04ebe219f1a8357c64, type: 3}
       propertyPath: m_DefaultControlScheme
-      value: KeyboardLeft
+      value: KeyboardRight
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
