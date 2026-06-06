@@ -6,8 +6,8 @@ public class CameraController : MonoBehaviour
     private Camera _mainCamera;
 
     [SerializeField] private List<Transform> targets;
-    [SerializeField] private float edgeBuffer = 4.0f;
-    [SerializeField] private float minSize = 6.0f;
+    [SerializeField] private float edgeBuffer = 1.0f;
+    [SerializeField] private float minSize = 3.5f;
     [SerializeField] private float maxSize = 18.0f;
 
     [SerializeField] private float smoothTime = 0.2f;
@@ -64,7 +64,7 @@ public class CameraController : MonoBehaviour
         foreach (var target in targets)
         {
             var targetLocalPos = transform.InverseTransformPoint(target.position);
-            var desiredPosToTarget = targetLocalPos = targetLocalPos - desiredLocalPosition;
+            var desiredPosToTarget = targetLocalPos - desiredLocalPosition;
 
             size = Mathf.Max(size, Mathf.Abs(desiredPosToTarget.y), Mathf.Abs(desiredPosToTarget.x) / _mainCamera.aspect);
         }
