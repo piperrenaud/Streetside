@@ -10,8 +10,8 @@ public class PauseScene : MonoBehaviour
     [SerializeField] private InputActionReference pauseAction;
 
     [Header("Game Stats")]
-    [SerializeField] private CanvasGraffitiSlot canvasOne;
-    [SerializeField] private CanvasGraffitiSlot canvasTwo;
+    [SerializeField] private CanvasGraffitiSlot graffitiSlotOne;
+    [SerializeField] private CanvasGraffitiSlot graffitiSlotTwo;
 
     private bool isPaused = false;
     private bool levelCompleteLoaded = false;
@@ -44,6 +44,7 @@ public class PauseScene : MonoBehaviour
 
     private void Start()
     {
+        pauseCanvas.SetActive(false);
         ResumeGame();
     }
 
@@ -82,15 +83,15 @@ public class PauseScene : MonoBehaviour
     {
         if (levelCompleteLoaded) return;
 
-        if (canvasOne == null || canvasTwo == null)
+        if (graffitiSlotOne == null || graffitiSlotTwo == null)
         {
             Debug.LogError("Canvas One or Canvas Two is not assigned on PauseScene.");
             return;
         }
 
-        bool player1HasGraffiti = canvasOne.PlayerIdOnCanvas == 1 || canvasTwo.PlayerIdOnCanvas == 1;
-        bool player2HasGraffiti = canvasOne.PlayerIdOnCanvas == 2 || canvasTwo.PlayerIdOnCanvas == 2;
-        bool bothCanvasesHaveGraffiti = canvasOne.PlayerIdOnCanvas != -1 && canvasTwo.PlayerIdOnCanvas != -1;
+        bool player1HasGraffiti = graffitiSlotOne.PlayerIdOnCanvas == 1 || graffitiSlotTwo.PlayerIdOnCanvas == 1;
+        bool player2HasGraffiti = graffitiSlotOne.PlayerIdOnCanvas == 2 || graffitiSlotTwo.PlayerIdOnCanvas == 2;
+        bool bothCanvasesHaveGraffiti = graffitiSlotOne.PlayerIdOnCanvas != -1 && graffitiSlotTwo.PlayerIdOnCanvas != -1;
 
         if (player1HasGraffiti && player2HasGraffiti && bothCanvasesHaveGraffiti)
         {

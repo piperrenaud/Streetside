@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -761688820318505144}
   - component: {fileID: 9098778281763890080}
   - component: {fileID: 789149515939015889}
+  - component: {fileID: 394712961936956637}
   m_Layer: 0
   m_Name: P1
   m_TagString: Player
@@ -45,7 +46,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7685845271901127508}
   serializedVersion: 5
-  m_Mass: 1
+  m_Mass: 2
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -77,14 +78,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player1
   moveSpeed: 5
-  jumpForce: 10
-  forwardForce: 10
   wallLayer:
     serializedVersion: 2
     m_Bits: 8
-  groundLayer:
+  interactLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
+  jumpHeight: 1.2
+  duration: 0.6
+  jumpDistance: 5
 --- !u!114 &-761688820318505144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,6 +143,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerGraffiti
   playerGraffiti: {fileID: 21300000, guid: dd1439ce77d39994996b4a74506f6427, type: 3}
   playerId: 0
+  qte: {fileID: 0}
+  qteInputMode: 0
+--- !u!114 &394712961936956637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7685845271901127508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 101efdbf659dcff4fb792da89431308b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerCurrency
+  coins: 0
+  currencyText: {fileID: 0}
 --- !u!1001 &3430880493824668389
 PrefabInstance:
   m_ObjectHideFlags: 0
