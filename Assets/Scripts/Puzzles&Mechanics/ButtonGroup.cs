@@ -6,32 +6,51 @@ public class ButtonGroup : MonoBehaviour
     [Header("Buttons in group")]
     public PressurePlate[] requiredButtons;
 
+    [Header("Button Behaviour")]
+    public bool buttonsMustStayPressed = true;
+
     [Header("Event when pressed")]
     public UnityEvent onAllButtonsPressed;
     public UnityEvent onButtonsReleased;
 
     private bool eventActive;
+    private bool permanentlyActivated;
 
     public void CheckButtons()
     {
+        if (permanentlyActivated) return;
+
+        bool allPressed = true;
+
         foreach (PressurePlate button in requiredButtons)
         {
             if (!button.IsPressed)
             {
-                if (eventActive)
-                {
-                    eventActive = false;
-                    onButtonsReleased.Invoke();
-                }
-
-                return;
+                allPressed = false;
+                break;
             }
         }
 
-        if (!eventActive)
+        if (allPressed)
         {
-            eventActive = true;
-            onAllButtonsPressed.Invoke();
+            if (!eventActive)
+            {
+                eventActive = true;
+                onAllButtonsPressed.Invoke();
+
+                if (!buttonsMustStayPressed)
+                {
+                    permanentlyActivated = true;
+                }
+            }
+        }
+        else 
+        {
+            if (eventActive && buttonsMustStayPressed)
+            {
+                eventActive = false;
+                onButtonsReleased.Invoke();
+            }
         }
     }
 }
