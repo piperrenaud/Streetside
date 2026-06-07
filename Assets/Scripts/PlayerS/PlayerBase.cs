@@ -46,6 +46,16 @@ public class PlayerBase : MonoBehaviour
     {
         
     }
+
+    public void OnStop(InputValue value)
+    {
+        if (value.isPressed)
+        { 
+            nextDirection = Vector3.zero;
+            
+            ForceStop(transform.position);
+        }
+    }
     
     void Start()
     {
