@@ -9,6 +9,8 @@ public class PlayerTracker : MonoBehaviour
 
     [SerializeField] private Camera mainCamera;
     [SerializeField] private LayerMask wallLayer;
+
+    [SerializeField] private float castRadius;
     
     private Vector3 p1TargetPos;
     private Vector3 p2TargetPos;
@@ -56,7 +58,7 @@ public class PlayerTracker : MonoBehaviour
         Ray orthoRay = mainCamera.ViewportPointToRay(viewportPoint);
         float distance = Vector3.Distance(orthoRay.origin, targetPos);
 
-        RaycastHit[] hits = Physics.RaycastAll(orthoRay.origin, orthoRay.direction, distance, wallLayer);
+        RaycastHit[] hits = Physics.SphereCastAll(orthoRay.origin, castRadius, orthoRay.direction, distance, wallLayer);
 
         for (int i = 0; i < hits.Length; i++)
         {
@@ -67,47 +69,10 @@ public class PlayerTracker : MonoBehaviour
             {
                 visibleThisFrame.Add(wallRenderer);
 
-                Vector4 shaderPassVector = new Vector4(hit.point.x, hit.point.y, hit.point.z, 1.0f);
+                Vector3 optimizedHitPoint = Vector3.Project(hit.point - orthoRay.origin, orthoRay.direction) + orthoRay.origin;
+
+                Vector4 shaderPassVector = new Vector4(optimizedHitPoint.x, optimizedHitPoint.y, optimizedHitPoint.z, 1.0f);
                 wallRenderer.material.SetVector(shaderTargetKey, shaderPassVector);
-            }
-        }
-    }
-
-    private void OnDrawGizmos()
-    {
-        if (mainCamera == null) return;
-
-        // --- DRAW PLAYER 1 PARALLEL PATH ---
-        if (playerOne != null)
-        {
-            Vector3 p1Target = playerOne.position + Vector3.up;
-            Vector3 vPoint = mainCamera.WorldToViewportPoint(p1Target);
-            Ray ray = mainCamera.ViewportPointToRay(vPoint);
-        
-            Gizmos.color = Color.cyan;
-            Gizmos.DrawLine(ray.origin, p1Target); // Draws the line straight from the orthographic plane
-
-            Gizmos.color = Color.blue;
-            foreach (Vector3 hitPoint in p1HitPoints)
-            {
-                Gizmos.DrawSphere(hitPoint, 0.25f);
-            }
-        }
-
-        // --- DRAW PLAYER 2 PARALLEL PATH ---
-        if (playerTwo != null)
-        {
-            Vector3 p2Target = playerTwo.position + Vector3.up;
-            Vector3 vPoint = mainCamera.WorldToViewportPoint(p2Target);
-            Ray ray = mainCamera.ViewportPointToRay(vPoint);
-        
-            Gizmos.color = Color.magenta;
-            Gizmos.DrawLine(ray.origin, p2Target);
-
-            Gizmos.color = Color.red;
-            foreach (Vector3 hitPoint in p2HitPoints)
-            {
-                Gizmos.DrawSphere(hitPoint, 0.25f);
             }
         }
     }

@@ -96,8 +96,6 @@ public class Player1 : PlayerBase
         {
             bNearLongJump = true;
             jumpNodeTransform = other.transform;
-            
-            ForceStop(other.transform.position);
         }
         
         if (other.CompareTag("HighJump"))
@@ -118,6 +116,13 @@ public class Player1 : PlayerBase
         {
             bNearLongJump = false;
             jumpNodeTransform = null;
+
+            if (!bIsJumping)
+            {
+                ForceStop(other.transform.position);
+
+                nextDirection = Vector3.zero;
+            }
         }
         
         if (other.CompareTag("Interactable"))
