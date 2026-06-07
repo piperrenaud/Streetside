@@ -9,6 +9,7 @@ public class SceneController : MonoBehaviour
     [SerializeField] private string mainMenuScene = "MainMenu";
     [SerializeField] private string levelSelectScene = "LevelSelect";
     [SerializeField] private string levelCompleteScene = "LevelComplete";
+    [SerializeField] private string OptionsScene = "Options";
 
     private string previousLevelScene;
 
@@ -37,6 +38,11 @@ public class SceneController : MonoBehaviour
     public void OpenLevelComplete()
     {
         SceneManager.LoadScene(levelCompleteScene);
+    }
+
+    public void OpenOptions()
+    {
+        SceneManager.LoadScene(OptionsScene);
     }
 
     public void OpenLevel(string levelSceneName)

@@ -80,4 +80,9 @@ public class PlayerGraffiti : MonoBehaviour
         Debug.Log("Graffiti QTE failed");
         isDoingQTE = false;
     }
+
+    public void SetplayerGraffiti(Sprite newplayerGraffiti)
+    {
+        playerGraffiti = newplayerGraffiti;
+    }
 }

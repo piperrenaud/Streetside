@@ -3297,6 +3297,7 @@ GameObject:
   m_Component:
   - component: {fileID: 360471440}
   - component: {fileID: 360471439}
+  - component: {fileID: 360471441}
   m_Layer: 0
   m_Name: PlayerManager
   m_TagString: Untagged
@@ -3337,6 +3338,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &360471441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360471438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04bbc2b523167dd48a2337791dc6343e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayersSetup
+  playerInfo: {fileID: 11400000, guid: bda12ac824b71f84e889799e67078491, type: 2}
+  playerOne: {fileID: 2024112742}
+  playerTwo: {fileID: 441748006}
 --- !u!4 &367917136 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: d830656ae8e37e84f91cb1c4685c7ed0, type: 3}
@@ -3970,6 +3986,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1300413753062450694, guid: 9c010c07147b0b04ebe219f1a8357c64, type: 3}
   m_PrefabInstance: {fileID: 1392566190}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &441748006 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4923557196867240563, guid: 9c010c07147b0b04ebe219f1a8357c64, type: 3}
+  m_PrefabInstance: {fileID: 1392566190}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40e1aabc7a0ee674e9fe83073677dfc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerGraffiti
 --- !u!1 &449373940
 GameObject:
   m_ObjectHideFlags: 0
@@ -16366,6 +16393,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3620294112647701367, guid: 3c10495d37b05254e9c0958eae51c752, type: 3}
   m_PrefabInstance: {fileID: 104027055}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2024112742 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 789149515939015889, guid: 3c10495d37b05254e9c0958eae51c752, type: 3}
+  m_PrefabInstance: {fileID: 104027055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40e1aabc7a0ee674e9fe83073677dfc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerGraffiti
 --- !u!4 &2037626664 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 304abbdecba1db749a599746f10692c2, type: 3}

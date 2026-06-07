@@ -17,6 +17,11 @@ public class ButtonActions : MonoBehaviour
         SceneController.Instance.OpenLevelComplete();
     }
 
+    public void GoToOptions()
+    {
+        SceneController.Instance.OpenOptions();
+    }
+
     public void LoadLevel(string levelSceneName)
     {
         SceneController.Instance.OpenLevel(levelSceneName);
