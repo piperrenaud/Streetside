@@ -599,7 +599,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7685845271901127508, guid: 3c10495d37b05254e9c0958eae51c752, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3138,6 +3138,7 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 8
+  castRadius: 0
 --- !u!4 &360471440
 Transform:
   m_ObjectHideFlags: 0
@@ -5471,17 +5472,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1825305504}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &581568760 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5971117588430624406, guid: a8f8a5c9989ded441a2c895cfff89e6d, type: 3}
-  m_PrefabInstance: {fileID: 2137035773}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d041750bd9764b448c1307ee7d55500, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CanvasGraffitiSlot
 --- !u!1 &594312745
 GameObject:
   m_ObjectHideFlags: 0
@@ -7813,8 +7803,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PauseScene
   pauseCanvas: {fileID: 186615592}
   pauseAction: {fileID: 2067856755}
-  canvasOne: {fileID: 581568760}
-  canvasTwo: {fileID: 992126123}
+  graffitiSlotOne: {fileID: 0}
+  graffitiSlotTwo: {fileID: 0}
 --- !u!1 &818599733
 GameObject:
   m_ObjectHideFlags: 0
@@ -9552,17 +9542,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1825305504}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &992126123 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5260800176745097719, guid: 9cb742ba90ed4e54389b599eaa1250e1, type: 3}
-  m_PrefabInstance: {fileID: 532175270}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d041750bd9764b448c1307ee7d55500, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CanvasGraffitiSlot
 --- !u!1001 &1000995647
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13063,7 +13042,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 689141988175025254, guid: 9c010c07147b0b04ebe219f1a8357c64, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1300413753062450694, guid: 9c010c07147b0b04ebe219f1a8357c64, type: 3}
       propertyPath: m_LocalPosition.x
