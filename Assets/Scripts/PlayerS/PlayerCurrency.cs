@@ -8,7 +8,7 @@ public class PlayerCurrency : MonoBehaviour
 
     private void Start()
     {
-        //UpdateUI();
+        UpdateUI();
     }
 
     public void AddCoins(int amount)
