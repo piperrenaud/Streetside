@@ -2172,7 +2172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bc442fa174b8d64181948d41eeaa8a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ImageSparyChnage
-  sprite: {fileID: 21300000, guid: 282e1bcd8f162cc40b829f81cd0c3b26, type: 3}
+  sprite: {fileID: 21300000, guid: ee938f5684a4db14fbe6b2e425d63742, type: 3}
   playerInfoObject: {fileID: 11400000, guid: bda12ac824b71f84e889799e67078491, type: 2}
   manager: {fileID: 1670440783}
 --- !u!114 &1528531413
