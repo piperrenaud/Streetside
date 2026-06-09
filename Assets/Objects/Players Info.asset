@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f973082a5554ad4b99f8bd20872ca17, type: 3}
   m_Name: Players Info
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInfoObject
-  P1Spray: {fileID: 21300000, guid: dd1439ce77d39994996b4a74506f6427, type: 3}
-  P2Spray: {fileID: 21300000, guid: 0109afe50e869af46affa85f0d4335a5, type: 3}
+  P1Spray: {fileID: 21300000, guid: 0d475f3336730e145bb979518fcd80ec, type: 3}
+  P2Spray: {fileID: 21300000, guid: 4284da9d067a1064c81cc5b370d41e2a, type: 3}

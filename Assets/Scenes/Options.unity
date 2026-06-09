@@ -1459,7 +1459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bc442fa174b8d64181948d41eeaa8a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ImageSparyChnage
-  sprite: {fileID: 21300000, guid: f34370eef4e504943915697d8d12c321, type: 3}
+  sprite: {fileID: 21300000, guid: 0d475f3336730e145bb979518fcd80ec, type: 3}
   playerInfoObject: {fileID: 11400000, guid: bda12ac824b71f84e889799e67078491, type: 2}
   manager: {fileID: 1670440783}
 --- !u!114 &907716824
@@ -1641,7 +1641,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bc442fa174b8d64181948d41eeaa8a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ImageSparyChnage
-  sprite: {fileID: 21300000, guid: 7d2cd823abfbb1540b82de1222b016c7, type: 3}
+  sprite: {fileID: 21300000, guid: 4284da9d067a1064c81cc5b370d41e2a, type: 3}
   playerInfoObject: {fileID: 11400000, guid: bda12ac824b71f84e889799e67078491, type: 2}
   manager: {fileID: 1670440783}
 --- !u!114 &1208536317
