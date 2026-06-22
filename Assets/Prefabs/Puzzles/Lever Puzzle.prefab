@@ -1,0 +1,230 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2235518713317294812
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7199030317628509955}
+  - component: {fileID: 2875780459612485588}
+  m_Layer: 0
+  m_Name: Lever Puzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7199030317628509955
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2235518713317294812}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 26.077606, y: 0.102, z: -34.181034}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8654510136154452405}
+  - {fileID: 1620014076699309477}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2875780459612485588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2235518713317294812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7efb21dfbb6a9454b9d519aa4c932ae8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LeverPuzzle
+  puzzleType: 1
+  levers:
+  - {fileID: 7958959109968645529}
+  - {fileID: 5183105694550409}
+  requiredOnCount: 2
+  requiredPattern: 
+  onPuzzleSolved:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2875780459612485588}
+        m_TargetAssemblyTypeName: LeverPuzzle, Assembly-CSharp
+        m_MethodName: TestingPuzzleDebugs
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: PUZZLE SOLVED!!!
+          m_BoolArgument: 0
+        m_CallState: 2
+  onPuzzleUnsolved:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2875780459612485588}
+        m_TargetAssemblyTypeName: LeverPuzzle, Assembly-CSharp
+        m_MethodName: TestingPuzzleDebugs
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: puzzle unsolved :(
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!1001 &1557516344804900092
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7199030317628509955}
+    m_Modifications:
+    - target: {fileID: 280941598601021785, guid: baff506fcc853a5478294405eae9da70, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 280941598601021785, guid: baff506fcc853a5478294405eae9da70, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 280941598601021785, guid: baff506fcc853a5478294405eae9da70, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 280941598601021785, guid: baff506fcc853a5478294405eae9da70, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 280941598601021785, guid: baff506fcc853a5478294405eae9da70, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 280941598601021785, guid: baff506fcc853a5478294405eae9da70, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 280941598601021785, guid: baff506fcc853a5478294405eae9da70, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 280941598601021785, guid: baff506fcc853a5478294405eae9da70, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 280941598601021785, guid: baff506fcc853a5478294405eae9da70, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 280941598601021785, guid: baff506fcc853a5478294405eae9da70, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4952055295729688327, guid: baff506fcc853a5478294405eae9da70, type: 3}
+      propertyPath: m_Name
+      value: Lever (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: baff506fcc853a5478294405eae9da70, type: 3}
+--- !u!114 &5183105694550409 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1553463544043025781, guid: baff506fcc853a5478294405eae9da70, type: 3}
+  m_PrefabInstance: {fileID: 1557516344804900092}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5febbeeeb13cb8e409f263bde7d301ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LeverSwitch
+--- !u!4 &1620014076699309477 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 280941598601021785, guid: baff506fcc853a5478294405eae9da70, type: 3}
+  m_PrefabInstance: {fileID: 1557516344804900092}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8934268617227139308
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7199030317628509955}
+    m_Modifications:
+    - target: {fileID: 280941598601021785, guid: baff506fcc853a5478294405eae9da70, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 280941598601021785, guid: baff506fcc853a5478294405eae9da70, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 280941598601021785, guid: baff506fcc853a5478294405eae9da70, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 280941598601021785, guid: baff506fcc853a5478294405eae9da70, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 280941598601021785, guid: baff506fcc853a5478294405eae9da70, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 280941598601021785, guid: baff506fcc853a5478294405eae9da70, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 280941598601021785, guid: baff506fcc853a5478294405eae9da70, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 280941598601021785, guid: baff506fcc853a5478294405eae9da70, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 280941598601021785, guid: baff506fcc853a5478294405eae9da70, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 280941598601021785, guid: baff506fcc853a5478294405eae9da70, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4952055295729688327, guid: baff506fcc853a5478294405eae9da70, type: 3}
+      propertyPath: m_Name
+      value: Lever
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: baff506fcc853a5478294405eae9da70, type: 3}
+--- !u!114 &7958959109968645529 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1553463544043025781, guid: baff506fcc853a5478294405eae9da70, type: 3}
+  m_PrefabInstance: {fileID: 8934268617227139308}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5febbeeeb13cb8e409f263bde7d301ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LeverSwitch
+--- !u!4 &8654510136154452405 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 280941598601021785, guid: baff506fcc853a5478294405eae9da70, type: 3}
+  m_PrefabInstance: {fileID: 8934268617227139308}
+  m_PrefabAsset: {fileID: 0}
